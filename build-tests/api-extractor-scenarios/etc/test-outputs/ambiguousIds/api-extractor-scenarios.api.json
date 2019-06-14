@@ -1,0 +1,965 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "[test mode]",
+    "schemaVersion": 1001,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "api-extractor-scenarios",
+  "uid": "api-extractor-scenarios/",
+  "docComment": "",
+  "name": "api-extractor-scenarios",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "",
+      "name": "",
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "(ClassWithAmbiguity:class)",
+          "uid": "api-extractor-scenarios/ClassWithAmbiguity",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class "
+            },
+            {
+              "kind": "Reference",
+              "text": "ClassWithAmbiguity"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ClassWithAmbiguity",
+          "members": [
+            {
+              "kind": "Method",
+              "canonicalReference": "(__constructor:instance,0)",
+              "uid": "api-extractor-scenarios/ClassWithAmbiguity#__constructor(string)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "__constructor"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "x"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "x",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  }
+                }
+              ],
+              "name": "__constructor"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "(__constructor:static,0)",
+              "uid": "api-extractor-scenarios/ClassWithAmbiguity.__constructor(string)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "__constructor"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "x"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "x",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 6
+                  }
+                }
+              ],
+              "name": "__constructor"
+            },
+            {
+              "kind": "Constructor",
+              "canonicalReference": "(:constructor,0)",
+              "uid": "api-extractor-scenarios/ClassWithAmbiguity.__constructor(string)",
+              "docComment": "/**\n * Constructs a new instance of the `ClassWithAmbiguity` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "x"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "x",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  }
+                }
+              ]
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "(EnumAndNamespace:enum)",
+          "uid": "api-extractor-scenarios/EnumAndNamespace",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum "
+            },
+            {
+              "kind": "Reference",
+              "text": "EnumAndNamespace"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "EnumAndNamespace",
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Apple",
+              "uid": "api-extractor-scenarios/EnumAndNamespace.Apple",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Apple"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Apple",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Banana",
+              "uid": "api-extractor-scenarios/EnumAndNamespace.Banana",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Banana"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Banana",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "Coconut",
+              "uid": "api-extractor-scenarios/EnumAndNamespace.Coconut",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "Coconut"
+                },
+                {
+                  "kind": "Content",
+                  "text": " = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "Coconut",
+              "initializerTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Namespace",
+          "canonicalReference": "(EnumAndNamespace:namespace)",
+          "uid": "api-extractor-scenarios/EnumAndNamespace:namespace",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare namespace "
+            },
+            {
+              "kind": "Reference",
+              "text": "EnumAndNamespace"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "EnumAndNamespace",
+          "members": [
+            {
+              "kind": "Namespace",
+              "canonicalReference": "(NestedNamespace:namespace)",
+              "uid": "api-extractor-scenarios/EnumAndNamespace.NestedNamespace",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "namespace "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "NestedNamespace"
+                },
+                {
+                  "kind": "Content",
+                  "text": " "
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "NestedNamespace",
+              "members": [
+                {
+                  "kind": "Variable",
+                  "canonicalReference": "test",
+                  "uid": "api-extractor-scenarios/EnumAndNamespace.NestedNamespace.test",
+                  "docComment": "",
+                  "excerptTokens": [
+                    {
+                      "kind": "Reference",
+                      "text": "test"
+                    },
+                    {
+                      "kind": "Content",
+                      "text": ": "
+                    },
+                    {
+                      "kind": "Content",
+                      "text": "number"
+                    }
+                  ],
+                  "releaseTag": "Public",
+                  "name": "test",
+                  "variableTypeTokenRange": {
+                    "startIndex": 2,
+                    "endIndex": 3
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "Function",
+              "canonicalReference": "(parseEnum:0)",
+              "uid": "api-extractor-scenarios/EnumAndNamespace.parseEnum(string)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "function "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "parseEnum"
+                },
+                {
+                  "kind": "Content",
+                  "text": "("
+                },
+                {
+                  "kind": "Reference",
+                  "text": "value"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "EnumAndNamespace"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 0,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 6
+                  }
+                }
+              ],
+              "name": "parseEnum"
+            }
+          ]
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "(functionWithUnexportedType:0)",
+          "uid": "api-extractor-scenarios/functionWithUnexportedType(api-extractor-scenarios/ForgottenExport)",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function "
+            },
+            {
+              "kind": "Reference",
+              "text": "functionWithUnexportedType"
+            },
+            {
+              "kind": "Content",
+              "text": "("
+            },
+            {
+              "kind": "Reference",
+              "text": "forgottenExport"
+            },
+            {
+              "kind": "Content",
+              "text": ": "
+            },
+            {
+              "kind": "Reference",
+              "text": "ForgottenExport"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 0,
+          "parameters": [
+            {
+              "parameterName": "forgottenExport",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              }
+            }
+          ],
+          "name": "functionWithUnexportedType"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "(ThreeKinds:1)",
+          "uid": "api-extractor-scenarios/ThreeKinds(string)",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function "
+            },
+            {
+              "kind": "Reference",
+              "text": "ThreeKinds"
+            },
+            {
+              "kind": "Content",
+              "text": "("
+            },
+            {
+              "kind": "Reference",
+              "text": "x"
+            },
+            {
+              "kind": "Content",
+              "text": ": "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "ThreeThings"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "x",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              }
+            }
+          ],
+          "name": "ThreeKinds"
+        },
+        {
+          "kind": "Namespace",
+          "canonicalReference": "(ThreeKinds:namespace)",
+          "uid": "api-extractor-scenarios/ThreeKinds:namespace",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare namespace "
+            },
+            {
+              "kind": "Reference",
+              "text": "ThreeKinds"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ThreeKinds",
+          "members": [
+            {
+              "kind": "Variable",
+              "canonicalReference": "x",
+              "uid": "api-extractor-scenarios/ThreeKinds.x",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "x"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "x",
+              "variableTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "(ThreeThings:interface)",
+          "uid": "api-extractor-scenarios/ThreeThings",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface "
+            },
+            {
+              "kind": "Reference",
+              "text": "ThreeThings"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ThreeThings",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "x",
+              "uid": "api-extractor-scenarios/ThreeThings#x",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Reference",
+                  "text": "x"
+                },
+                {
+                  "kind": "Content",
+                  "text": ": "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "x",
+              "propertyTypeTokenRange": {
+                "startIndex": 2,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "(veryComplexSignature:0)",
+          "uid": "api-extractor-scenarios/veryComplexSignature({{args:{{}},buildErrorIconPath?:undefined|string,buildSuccessIconPath?:undefined|string,distFolder:string,isRedundantBuild?:undefined|false|true,jestEnabled?:undefined|false|true,libAMDFolder?:undefined|string,libES6Folder?:undefined|string,libESNextFolder?:undefined|string,libFolder:string,onTaskEnd?:undefined|(string,Array`1{number},?any)~void,onTaskStart?:undefined|(string)~void,packageFolder:string,production:boolean,properties?:undefined|{{}},relogIssues?:undefined|false|true,rootPath:string,shouldWarningsFailBuild:boolean,showToast?:undefined|false|true,srcFolder:string,tempFolder:string,verbose:boolean}}&Partial`1api-extractor-scenarios/ForgottenExport)",
+          "docComment": "/**\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function "
+            },
+            {
+              "kind": "Reference",
+              "text": "veryComplexSignature"
+            },
+            {
+              "kind": "Content",
+              "text": "("
+            },
+            {
+              "kind": "Reference",
+              "text": "options"
+            },
+            {
+              "kind": "Content",
+              "text": ": "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "args"
+            },
+            {
+              "kind": "Content",
+              "text": ": {\n        ["
+            },
+            {
+              "kind": "Reference",
+              "text": "name"
+            },
+            {
+              "kind": "Content",
+              "text": ": string]: string | boolean;\n    };\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "buildErrorIconPath"
+            },
+            {
+              "kind": "Content",
+              "text": "?: string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "buildSuccessIconPath"
+            },
+            {
+              "kind": "Content",
+              "text": "?: string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "distFolder"
+            },
+            {
+              "kind": "Content",
+              "text": ": string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "isRedundantBuild"
+            },
+            {
+              "kind": "Content",
+              "text": "?: boolean;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "jestEnabled"
+            },
+            {
+              "kind": "Content",
+              "text": "?: boolean;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "libAMDFolder"
+            },
+            {
+              "kind": "Content",
+              "text": "?: string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "libES6Folder"
+            },
+            {
+              "kind": "Content",
+              "text": "?: string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "libESNextFolder"
+            },
+            {
+              "kind": "Content",
+              "text": "?: string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "libFolder"
+            },
+            {
+              "kind": "Content",
+              "text": ": string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "onTaskEnd"
+            },
+            {
+              "kind": "Content",
+              "text": "?: ("
+            },
+            {
+              "kind": "Reference",
+              "text": "taskName"
+            },
+            {
+              "kind": "Content",
+              "text": ": string, "
+            },
+            {
+              "kind": "Reference",
+              "text": "duration"
+            },
+            {
+              "kind": "Content",
+              "text": ": number[], "
+            },
+            {
+              "kind": "Reference",
+              "text": "error"
+            },
+            {
+              "kind": "Content",
+              "text": "?: any) => void;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "onTaskStart"
+            },
+            {
+              "kind": "Content",
+              "text": "?: ("
+            },
+            {
+              "kind": "Reference",
+              "text": "taskName"
+            },
+            {
+              "kind": "Content",
+              "text": ": string) => void;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "packageFolder"
+            },
+            {
+              "kind": "Content",
+              "text": ": string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "production"
+            },
+            {
+              "kind": "Content",
+              "text": ": boolean;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "properties"
+            },
+            {
+              "kind": "Content",
+              "text": "?: {\n        ["
+            },
+            {
+              "kind": "Reference",
+              "text": "key"
+            },
+            {
+              "kind": "Content",
+              "text": ": string]: any;\n    };\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "relogIssues"
+            },
+            {
+              "kind": "Content",
+              "text": "?: boolean;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "rootPath"
+            },
+            {
+              "kind": "Content",
+              "text": ": string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "shouldWarningsFailBuild"
+            },
+            {
+              "kind": "Content",
+              "text": ": boolean;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "showToast"
+            },
+            {
+              "kind": "Content",
+              "text": "?: boolean;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "srcFolder"
+            },
+            {
+              "kind": "Content",
+              "text": ": string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "tempFolder"
+            },
+            {
+              "kind": "Content",
+              "text": ": string;\n    "
+            },
+            {
+              "kind": "Reference",
+              "text": "verbose"
+            },
+            {
+              "kind": "Content",
+              "text": ": boolean;\n} & "
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "ForgottenExport"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 67,
+            "endIndex": 68
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 0,
+          "parameters": [
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 66
+              }
+            }
+          ],
+          "name": "veryComplexSignature"
+        }
+      ]
+    }
+  ]
+}
