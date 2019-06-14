@@ -235,7 +235,9 @@ export class ApiItem {
     readonly parent: ApiItem | undefined;
     // @virtual (undocumented)
     serializeInto(jsonObject: Partial<IApiItemJson>): void;
-}
+    // (undocumented)
+    readonly uid: string;
+    }
 
 // @public
 export function ApiItemContainerMixin<TBaseClass extends IApiItemConstructor>(baseClass: TBaseClass): TBaseClass & (new (...args: any[]) => ApiItemContainerMixin);
@@ -662,6 +664,8 @@ export interface IApiItemContainerMixinOptions extends IApiItemOptions {
 
 // @public
 export interface IApiItemOptions {
+    // (undocumented)
+    uid?: string;
 }
 
 // @public

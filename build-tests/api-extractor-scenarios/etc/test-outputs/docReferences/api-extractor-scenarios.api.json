@@ -7,6 +7,7 @@
   },
   "kind": "Package",
   "canonicalReference": "api-extractor-scenarios",
+  "uid": "api-extractor-scenarios/",
   "docComment": "",
   "name": "api-extractor-scenarios",
   "members": [
@@ -18,6 +19,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(failWithBrokenLink:0)",
+          "uid": "api-extractor-scenarios/failWithBrokenLink",
           "docComment": "/**\n * {@inheritDoc MyNamespace.MyClass.nonExistentMethod}\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -53,6 +55,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(failWithMissingReference:0)",
+          "uid": "api-extractor-scenarios/failWithMissingReference",
           "docComment": "/**\n * {@inheritDoc}\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -88,6 +91,7 @@
         {
           "kind": "Namespace",
           "canonicalReference": "(MyNamespace:namespace)",
+          "uid": "api-extractor-scenarios/MyNamespace",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -109,6 +113,7 @@
             {
               "kind": "Class",
               "canonicalReference": "(MyClass:class)",
+              "uid": "api-extractor-scenarios/MyNamespace.MyClass",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -130,6 +135,7 @@
                 {
                   "kind": "Method",
                   "canonicalReference": "(myMethod:instance,0)",
+                  "uid": "api-extractor-scenarios/MyNamespace.MyClass#myMethod(number)",
                   "docComment": "/**\n * Summary for myMethod\n *\n * @remarks\n *\n * Remarks for myMethod\n *\n * @param x - the parameter\n *\n * @returns a number\n *\n * @beta\n */\n",
                   "excerptTokens": [
                     {
@@ -191,6 +197,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(succeedForNow:0)",
+          "uid": "api-extractor-scenarios/succeedForNow",
           "docComment": "/**\n * {@inheritDoc nonexistent-package#MyNamespace.MyClass.nonExistentMethod}\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -226,6 +233,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(testSimple:0)",
+          "uid": "api-extractor-scenarios/testSimple",
           "docComment": "/**\n * Summary for myMethod\n *\n * @remarks\n *\n * Remarks for myMethod\n *\n * @param x - the parameter\n *\n * @returns a number\n *\n * @public\n */\n",
           "excerptTokens": [
             {

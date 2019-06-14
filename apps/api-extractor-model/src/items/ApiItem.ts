@@ -40,11 +40,13 @@ export const enum ApiItemKind {
  * @public
  */
 export interface IApiItemOptions {
+  uid?: string;
 }
 
 export interface IApiItemJson {
   kind: ApiItemKind;
   canonicalReference: string;
+  uid?: string;
 }
 
 /**
@@ -65,6 +67,8 @@ export const ApiItem_parent: unique symbol = Symbol('ApiItem._parent');
 export class ApiItem {
   public [ApiItem_parent]: ApiItem | undefined;
 
+  private _uid: string | undefined;
+
   public static deserialize(jsonObject: IApiItemJson, context: DeserializerContext): ApiItem {
     // The Deserializer class is coupled with a ton of other classes, so  we delay loading it
     // to avoid ES5 circular imports.
@@ -73,19 +77,24 @@ export class ApiItem {
   }
 
   /** @virtual */
-  public static onDeserializeInto(options: Partial<IApiItemOptions>,  context: DeserializerContext,
+  public static onDeserializeInto(options: Partial<IApiItemOptions>, context: DeserializerContext,
     jsonObject: IApiItemJson): void {
-    // (implemented by subclasses)
+    if (jsonObject.uid !== undefined) {
+      options.uid = jsonObject.uid;
+    }
   }
 
   public constructor(options: IApiItemOptions) {
-    // ("options" is not used here, but part of the inheritance pattern)
+    this._uid = options.uid;
   }
 
   /** @virtual */
   public serializeInto(jsonObject: Partial<IApiItemJson>): void {
     jsonObject.kind = this.kind;
     jsonObject.canonicalReference = this.canonicalReference;
+    if (this._uid !== undefined) {
+      jsonObject.uid = this._uid;
+    }
   }
 
   /** @virtual */
@@ -96,6 +105,10 @@ export class ApiItem {
   /** @virtual */
   public get canonicalReference(): string {
     throw new Error('ApiItem.canonicalReference was not implemented by the child class');
+  }
+
+  public get uid(): string {
+    return this._uid || '';
   }
 
   /**

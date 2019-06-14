@@ -7,6 +7,7 @@
   },
   "kind": "Package",
   "canonicalReference": "api-extractor-scenarios",
+  "uid": "api-extractor-scenarios/",
   "docComment": "",
   "name": "api-extractor-scenarios",
   "members": [
@@ -18,6 +19,7 @@
         {
           "kind": "Interface",
           "canonicalReference": "(A:interface)",
+          "uid": "api-extractor-scenarios/A",
           "docComment": "",
           "excerptTokens": [
             {
@@ -39,6 +41,7 @@
             {
               "kind": "PropertySignature",
               "canonicalReference": "myProperty",
+              "uid": "api-extractor-scenarios/A#myProperty",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -71,6 +74,7 @@
         {
           "kind": "Namespace",
           "canonicalReference": "(A:namespace)",
+          "uid": "api-extractor-scenarios/A:namespace",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -92,6 +96,7 @@
             {
               "kind": "Class",
               "canonicalReference": "(B:class)",
+              "uid": "api-extractor-scenarios/A.B",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -113,6 +118,7 @@
                 {
                   "kind": "Method",
                   "canonicalReference": "(myMethod:instance,0)",
+                  "uid": "api-extractor-scenarios/A.B#myMethod",
                   "docComment": "",
                   "excerptTokens": [
                     {
@@ -150,6 +156,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(failWithAmbiguity:0)",
+          "uid": "api-extractor-scenarios/failWithAmbiguity",
           "docComment": "/**\n * {@link MyNamespace.MyClass.myMethod | the method}\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -185,6 +192,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(succeedWithExternalReference:0)",
+          "uid": "api-extractor-scenarios/succeedWithExternalReference",
           "docComment": "/**\n * NOTE: The broken link checker currently is not able to validate references to external packages. Tracked by: https://github.com/Microsoft/web-build-tools/issues/1195 {@link nonexistent#nonexistent}\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -220,6 +228,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(succeedWithSelector:0)",
+          "uid": "api-extractor-scenarios/succeedWithSelector",
           "docComment": "/**\n * {@link (A:namespace).B.myMethod | the method} {@link (A:interface).myProperty | the property}\n *\n * @public\n */\n",
           "excerptTokens": [
             {

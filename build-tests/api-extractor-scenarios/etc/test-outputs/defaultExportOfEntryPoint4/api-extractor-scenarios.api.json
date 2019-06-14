@@ -7,6 +7,7 @@
   },
   "kind": "Package",
   "canonicalReference": "api-extractor-scenarios",
+  "uid": "api-extractor-scenarios/",
   "docComment": "",
   "name": "api-extractor-scenarios",
   "members": [
@@ -18,6 +19,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "_default",
+          "uid": "api-extractor-scenarios/_default",
           "docComment": "",
           "excerptTokens": [
             {

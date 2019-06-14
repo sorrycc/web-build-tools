@@ -7,6 +7,7 @@
   },
   "kind": "Package",
   "canonicalReference": "api-extractor-scenarios",
+  "uid": "api-extractor-scenarios/",
   "docComment": "",
   "name": "api-extractor-scenarios",
   "members": [
@@ -18,6 +19,7 @@
         {
           "kind": "Class",
           "canonicalReference": "(A:class)",
+          "uid": "api-extractor-scenarios/A",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -41,6 +43,7 @@
         {
           "kind": "Class",
           "canonicalReference": "(B:class)",
+          "uid": "api-extractor-scenarios/B",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -64,6 +67,7 @@
         {
           "kind": "Class",
           "canonicalReference": "(IFile:class)",
+          "uid": "api-extractor-scenarios/IFile",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -85,6 +89,7 @@
             {
               "kind": "Property",
               "canonicalReference": "(containingFolder:instance)",
+              "uid": "api-extractor-scenarios/IFile#containingFolder",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -118,6 +123,7 @@
         {
           "kind": "Class",
           "canonicalReference": "(IFolder:class)",
+          "uid": "api-extractor-scenarios/IFolder",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -139,6 +145,7 @@
             {
               "kind": "Property",
               "canonicalReference": "(containingFolder:instance)",
+              "uid": "api-extractor-scenarios/IFolder#containingFolder",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -173,6 +180,7 @@
             {
               "kind": "Property",
               "canonicalReference": "(files:instance)",
+              "uid": "api-extractor-scenarios/IFolder#files",
               "docComment": "",
               "excerptTokens": [
                 {

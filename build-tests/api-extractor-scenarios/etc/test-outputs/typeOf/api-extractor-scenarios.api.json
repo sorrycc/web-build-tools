@@ -7,6 +7,7 @@
   },
   "kind": "Package",
   "canonicalReference": "api-extractor-scenarios",
+  "uid": "api-extractor-scenarios/",
   "docComment": "",
   "name": "api-extractor-scenarios",
   "members": [
@@ -18,6 +19,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(f:0)",
+          "uid": "api-extractor-scenarios/f",
           "docComment": "/**\n * Reference Lib1Class via \"typeof\"\n *\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -61,6 +63,7 @@
         {
           "kind": "Function",
           "canonicalReference": "(g:0)",
+          "uid": "api-extractor-scenarios/g",
           "docComment": "/**\n * Reference IForgottenExport via \"typeof\"\n *\n * @public\n */\n",
           "excerptTokens": [
             {

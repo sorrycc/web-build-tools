@@ -5,6 +5,15 @@
 
 import * as ts from 'typescript';
 
+export interface IMappedType extends ts.ObjectType {
+  declaration: ts.MappedTypeNode;
+  typeParameter?: ts.TypeParameter;
+  constraintType?: ts.Type;
+  templateType?: ts.Type;
+  modifiersType?: ts.Type;
+  resolvedApparentType?: ts.Type;
+}
+
 export class TypeScriptInternals {
 
   public static getImmediateAliasedSymbol(symbol: ts.Symbol, typeChecker: ts.TypeChecker): ts.Symbol {
@@ -83,4 +92,28 @@ export class TypeScriptInternals {
   public static getSymbolParent(symbol: ts.Symbol): ts.Symbol | undefined {
     return (symbol as any).parent;
   }
+
+  /**
+   * Determines whether a type is the 'this' type parameter.
+   */
+  public static isThisType(type: ts.Type): boolean {
+    // tslint:disable-next-line:no-bitwise
+    return type.flags & ts.TypeFlags.TypeParameter
+      ? (type as any).isThisType || false
+      : false;
+  }
+
+  public static getMappedType(type: ts.Type): IMappedType | undefined {
+    if (isMappedType(type)) {
+      return <IMappedType>type;
+    }
+    return undefined;
+  }
+}
+
+function isMappedType(type: ts.Type): boolean {
+  // tslint:disable-next-line:no-bitwise
+  return !!(type.flags & ts.TypeFlags.Object)
+    // tslint:disable-next-line:no-bitwise
+    && !!((type as ts.ObjectType).objectFlags & ts.ObjectFlags.Mapped);
 }

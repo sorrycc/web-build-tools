@@ -37,16 +37,23 @@ import { Collector } from '../collector/Collector';
 import { AstDeclaration } from '../analyzer/AstDeclaration';
 import { ExcerptBuilder, IExcerptBuilderNodeToCapture } from './ExcerptBuilder';
 import { AstSymbol } from '../analyzer/AstSymbol';
+import { UidGenerator } from './UidGenerator';
 
 export class ApiModelGenerator {
   private readonly _collector: Collector;
   private readonly _cachedOverloadIndexesByDeclaration: Map<AstDeclaration, number>;
   private readonly _apiModel: ApiModel;
+  private readonly _uidGenerator: UidGenerator;
 
   public constructor(collector: Collector) {
     this._collector = collector;
     this._cachedOverloadIndexesByDeclaration = new Map<AstDeclaration, number>();
     this._apiModel = new ApiModel();
+    this._uidGenerator = new UidGenerator(
+      collector.packageJsonLookup,
+      collector.program,
+      collector.typeChecker,
+      collector.workingPackage.name);
   }
 
   public get apiModel(): ApiModel {
@@ -56,9 +63,11 @@ export class ApiModelGenerator {
   public buildApiPackage(): ApiPackage {
     const packageDocComment: tsdoc.DocComment | undefined = this._collector.workingPackage.tsdocComment;
 
+    const name: string = this._collector.workingPackage.name;
     const apiPackage: ApiPackage = new ApiPackage({
-      name: this._collector.workingPackage.name,
-      docComment: packageDocComment
+      name,
+      docComment: packageDocComment,
+      uid: `${name}/`
     });
     this._apiModel.addMember(apiPackage);
 
@@ -213,6 +222,7 @@ export class ApiModelGenerator {
 
     const overloadIndex: number = this._getOverloadIndex(astDeclaration);
     const canonicalReference: string = ApiConstructor.getCanonicalReference(overloadIndex);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiConstructor: ApiConstructor | undefined = parentApiItem.tryGetMember(canonicalReference) as ApiConstructor;
 
@@ -232,7 +242,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiConstructor = new ApiConstructor({ docComment, releaseTag, parameters, overloadIndex,
+      apiConstructor = new ApiConstructor({ uid, docComment, releaseTag, parameters, overloadIndex,
         excerptTokens });
 
       parentApiItem.addMember(apiConstructor);
@@ -244,6 +254,7 @@ export class ApiModelGenerator {
 
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
     const canonicalReference: string = ApiClass.getCanonicalReference(name);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiClass: ApiClass | undefined = parentApiItem.tryGetMember(canonicalReference) as ApiClass;
 
@@ -281,7 +292,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiClass = new ApiClass({ name, docComment, releaseTag, excerptTokens, typeParameters, extendsTokenRange,
+      apiClass = new ApiClass({ name, uid, docComment, releaseTag, excerptTokens, typeParameters, extendsTokenRange,
         implementsTokenRanges });
 
       parentApiItem.addMember(apiClass);
@@ -332,6 +343,7 @@ export class ApiModelGenerator {
 
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
     const canonicalReference: string = ApiEnum.getCanonicalReference(name);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiEnum: ApiEnum | undefined = parentApiItem.tryGetMember(canonicalReference) as ApiEnum;
 
@@ -344,7 +356,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiEnum = new ApiEnum({ name, docComment, releaseTag, excerptTokens });
+      apiEnum = new ApiEnum({ name, uid, docComment, releaseTag, excerptTokens });
       parentApiItem.addMember(apiEnum);
     }
 
@@ -356,6 +368,7 @@ export class ApiModelGenerator {
 
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
     const canonicalReference: string = ApiEnumMember.getCanonicalReference(name);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiEnumMember: ApiEnumMember | undefined = parentApiItem.tryGetMember(canonicalReference) as ApiEnumMember;
 
@@ -375,7 +388,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiEnumMember = new ApiEnumMember({ name, docComment, releaseTag,
+      apiEnumMember = new ApiEnumMember({ name, uid, docComment, releaseTag,
         excerptTokens, initializerTokenRange });
 
       parentApiItem.addMember(apiEnumMember);
@@ -386,9 +399,9 @@ export class ApiModelGenerator {
     parentApiItem: ApiItemContainerMixin): void {
 
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
-
     const overloadIndex: number = this._getOverloadIndex(astDeclaration);
     const canonicalReference: string = ApiFunction.getCanonicalReference(name, overloadIndex);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiFunction: ApiFunction | undefined = parentApiItem.tryGetMember(canonicalReference) as
       ApiFunction;
@@ -414,7 +427,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiFunction = new ApiFunction({ name, docComment, releaseTag, typeParameters, parameters, overloadIndex,
+      apiFunction = new ApiFunction({ name, uid, docComment, releaseTag, typeParameters, parameters, overloadIndex,
         excerptTokens, returnTypeTokenRange });
 
       parentApiItem.addMember(apiFunction);
@@ -459,6 +472,7 @@ export class ApiModelGenerator {
 
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
     const canonicalReference: string = ApiInterface.getCanonicalReference(name);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiInterface: ApiInterface | undefined = parentApiItem.tryGetMember(canonicalReference) as ApiInterface;
 
@@ -491,7 +505,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiInterface = new ApiInterface({ name, docComment, releaseTag, excerptTokens, typeParameters,
+      apiInterface = new ApiInterface({ name, uid, docComment, releaseTag, excerptTokens, typeParameters,
         extendsTokenRanges });
 
       parentApiItem.addMember(apiInterface);
@@ -508,6 +522,7 @@ export class ApiModelGenerator {
     const isStatic: boolean = (astDeclaration.modifierFlags & ts.ModifierFlags.Static) !== 0;
     const overloadIndex: number = this._getOverloadIndex(astDeclaration);
     const canonicalReference: string = ApiMethod.getCanonicalReference(name, isStatic, overloadIndex);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiMethod: ApiMethod | undefined = parentApiItem.tryGetMember(canonicalReference) as ApiMethod;
 
@@ -532,8 +547,8 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiMethod = new ApiMethod({ name, docComment, releaseTag, isStatic, typeParameters, parameters, overloadIndex,
-        excerptTokens, returnTypeTokenRange });
+      apiMethod = new ApiMethod({ name, uid, docComment, releaseTag, isStatic, typeParameters, parameters,
+        overloadIndex, excerptTokens, returnTypeTokenRange });
 
       parentApiItem.addMember(apiMethod);
     }
@@ -546,6 +561,7 @@ export class ApiModelGenerator {
 
     const overloadIndex: number = this._getOverloadIndex(astDeclaration);
     const canonicalReference: string = ApiMethodSignature.getCanonicalReference(name, overloadIndex);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiMethodSignature: ApiMethodSignature | undefined = parentApiItem.tryGetMember(canonicalReference) as
       ApiMethodSignature;
@@ -570,7 +586,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiMethodSignature = new ApiMethodSignature({ name, docComment, releaseTag, typeParameters, parameters,
+      apiMethodSignature = new ApiMethodSignature({ name, uid, docComment, releaseTag, typeParameters, parameters,
         overloadIndex, excerptTokens, returnTypeTokenRange });
 
       parentApiItem.addMember(apiMethodSignature);
@@ -582,6 +598,7 @@ export class ApiModelGenerator {
 
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
     const canonicalReference: string = ApiNamespace.getCanonicalReference(name);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiNamespace: ApiNamespace | undefined = parentApiItem.tryGetMember(canonicalReference) as ApiNamespace;
 
@@ -594,7 +611,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiNamespace = new ApiNamespace({ name, docComment, releaseTag, excerptTokens });
+      apiNamespace = new ApiNamespace({ name, uid, docComment, releaseTag, excerptTokens });
       parentApiItem.addMember(apiNamespace);
     }
 
@@ -609,6 +626,7 @@ export class ApiModelGenerator {
     const isStatic: boolean = (astDeclaration.modifierFlags & ts.ModifierFlags.Static) !== 0;
 
     const canonicalReference: string = ApiProperty.getCanonicalReference(name, isStatic);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiProperty: ApiProperty | undefined
       = parentApiItem.tryGetMember(canonicalReference) as ApiProperty;
@@ -628,7 +646,8 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiProperty = new ApiProperty({ name, docComment, releaseTag, isStatic, excerptTokens, propertyTypeTokenRange });
+      apiProperty = new ApiProperty({ name, uid, docComment, releaseTag, isStatic, excerptTokens,
+        propertyTypeTokenRange });
       parentApiItem.addMember(apiProperty);
     } else {
       // If the property was already declared before (via a merged interface declaration),
@@ -641,6 +660,7 @@ export class ApiModelGenerator {
 
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
     const canonicalReference: string = ApiPropertySignature.getCanonicalReference(name);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiPropertySignature: ApiPropertySignature | undefined
       = parentApiItem.tryGetMember(canonicalReference) as ApiPropertySignature;
@@ -660,7 +680,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiPropertySignature = new ApiPropertySignature({ name, docComment, releaseTag,
+      apiPropertySignature = new ApiPropertySignature({ name, uid, docComment, releaseTag,
         excerptTokens, propertyTypeTokenRange });
       parentApiItem.addMember(apiPropertySignature);
     } else {
@@ -675,6 +695,7 @@ export class ApiModelGenerator {
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
 
     const canonicalReference: string = ApiTypeAlias.getCanonicalReference(name);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiTypeAlias: ApiTypeAlias | undefined = parentApiItem.tryGetMember(canonicalReference) as
       ApiTypeAlias;
@@ -697,7 +718,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiTypeAlias = new ApiTypeAlias({ name, docComment, typeParameters, releaseTag, excerptTokens,
+      apiTypeAlias = new ApiTypeAlias({ name, uid, docComment, typeParameters, releaseTag, excerptTokens,
         typeTokenRange });
 
       parentApiItem.addMember(apiTypeAlias);
@@ -710,6 +731,7 @@ export class ApiModelGenerator {
     const name: string = !!exportedName ? exportedName : astDeclaration.astSymbol.localName;
 
     const canonicalReference: string = ApiVariable.getCanonicalReference(name);
+    const uid: string = this._uidGenerator.getUidOfDeclaration(astDeclaration.declaration);
 
     let apiVariable: ApiVariable | undefined = parentApiItem.tryGetMember(canonicalReference) as
       ApiVariable;
@@ -729,7 +751,7 @@ export class ApiModelGenerator {
       const docComment: tsdoc.DocComment | undefined = this._collector.fetchMetadata(astDeclaration).tsdocComment;
       const releaseTag: ReleaseTag = this._collector.fetchMetadata(astDeclaration.astSymbol).releaseTag;
 
-      apiVariable = new ApiVariable({ name, docComment, releaseTag, excerptTokens, variableTypeTokenRange });
+      apiVariable = new ApiVariable({ name, uid, docComment, releaseTag, excerptTokens, variableTypeTokenRange });
 
       parentApiItem.addMember(apiVariable);
     }

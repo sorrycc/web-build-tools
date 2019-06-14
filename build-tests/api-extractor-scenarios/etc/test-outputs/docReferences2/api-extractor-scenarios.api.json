@@ -7,6 +7,7 @@
   },
   "kind": "Package",
   "canonicalReference": "api-extractor-scenarios",
+  "uid": "api-extractor-scenarios/",
   "docComment": "",
   "name": "api-extractor-scenarios",
   "members": [
@@ -18,6 +19,7 @@
         {
           "kind": "Class",
           "canonicalReference": "(CyclicA:class)",
+          "uid": "api-extractor-scenarios/CyclicA",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -39,6 +41,7 @@
             {
               "kind": "Method",
               "canonicalReference": "(methodA1:instance,0)",
+              "uid": "api-extractor-scenarios/CyclicA#methodA1",
               "docComment": "/**\n * THE COMMENT\n */\n",
               "excerptTokens": [
                 {
@@ -71,6 +74,7 @@
             {
               "kind": "Method",
               "canonicalReference": "(methodA3:instance,0)",
+              "uid": "api-extractor-scenarios/CyclicA#methodA3",
               "docComment": "/**\n * THE COMMENT\n */\n",
               "excerptTokens": [
                 {
@@ -106,6 +110,7 @@
         {
           "kind": "Class",
           "canonicalReference": "(CyclicB:class)",
+          "uid": "api-extractor-scenarios/CyclicB",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -127,6 +132,7 @@
             {
               "kind": "Method",
               "canonicalReference": "(methodB2:instance,0)",
+              "uid": "api-extractor-scenarios/CyclicB#methodB2",
               "docComment": "/**\n * THE COMMENT\n */\n",
               "excerptTokens": [
                 {
@@ -159,6 +165,7 @@
             {
               "kind": "Method",
               "canonicalReference": "(methodB4:instance,0)",
+              "uid": "api-extractor-scenarios/CyclicB#methodB4",
               "docComment": "/**\n * THE COMMENT\n */\n",
               "excerptTokens": [
                 {
@@ -194,6 +201,7 @@
         {
           "kind": "Class",
           "canonicalReference": "(FailWithSelfReference:class)",
+          "uid": "api-extractor-scenarios/FailWithSelfReference",
           "docComment": "/**\n * @public\n */\n",
           "excerptTokens": [
             {
@@ -215,6 +223,7 @@
             {
               "kind": "Method",
               "canonicalReference": "(method1:instance,0)",
+              "uid": "api-extractor-scenarios/FailWithSelfReference#method1",
               "docComment": "",
               "excerptTokens": [
                 {
@@ -247,6 +256,7 @@
             {
               "kind": "Method",
               "canonicalReference": "(method2:instance,0)",
+              "uid": "api-extractor-scenarios/FailWithSelfReference#method2",
               "docComment": "",
               "excerptTokens": [
                 {
