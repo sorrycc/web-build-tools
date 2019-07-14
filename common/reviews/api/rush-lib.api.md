@@ -68,7 +68,7 @@ export class CommonVersionsConfiguration {
     getAllPreferredVersions(): Map<string, string>;
     static loadFromFile(jsonFilename: string): CommonVersionsConfiguration;
     readonly preferredVersions: Map<string, string>;
-    save(): void;
+    save(): boolean;
     readonly xstitchPreferredVersions: Map<string, string>;
     }
 
@@ -247,6 +247,7 @@ export class RushConfiguration {
     findProjectByTempName(tempProjectName: string): RushConfigurationProject | undefined;
     getCommittedShrinkwrapFilename(variant?: string | undefined): string;
     getCommonVersions(variant?: string | undefined): CommonVersionsConfiguration;
+    getCommonVersionsFilePath(variant?: string | undefined): string;
     getPnpmfilePath(variant?: string | undefined): string;
     getProjectByName(projectName: string): RushConfigurationProject | undefined;
     readonly gitAllowedEmailRegExps: string[];
@@ -331,6 +332,7 @@ export abstract class VersionPolicy {
     abstract bump(bumpType?: BumpType, identifier?: string): void;
     readonly definitionName: VersionPolicyDefinitionName;
     abstract ensure(project: IPackageJson, force?: boolean): IPackageJson | undefined;
+    readonly exemptFromRushChange: boolean;
     readonly isLockstepped: boolean;
     // @internal
     abstract readonly _json: IVersionPolicyJson;
